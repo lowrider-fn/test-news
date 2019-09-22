@@ -44,6 +44,7 @@
 </template>
 
 <script>
+
 export default {
     props: {
         isAdmin: {
@@ -66,7 +67,6 @@ export default {
             }
             return '';
         },
-
     },
     methods: {
         monthToString(val) {

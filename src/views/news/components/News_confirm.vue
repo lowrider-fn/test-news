@@ -30,6 +30,7 @@
 </template>
 
 <script>
+
 import Modal from '@/components/blocks/Modal';
 
 export default {

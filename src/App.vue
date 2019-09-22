@@ -10,6 +10,7 @@
 </template>
 
 <script>
+
 import Header from '@/components/blocks/Header';
 import { mapGetters, mapMutations, mapActions } from 'vuex';
 
@@ -44,7 +45,5 @@ export default {
             }
         },
     },
-
 };
 </script>
-

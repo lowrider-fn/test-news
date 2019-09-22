@@ -37,7 +37,9 @@
         </div>
     </div>
 </template>
+
 <script>
+
 import NewsItem from './components/News_item';
 import { mapGetters, mapActions } from 'vuex';
 import cloneDeep from 'lodash.clonedeep';
@@ -139,10 +141,7 @@ export default {
             this.updateNews(news);
         },
         save(form) {
-            console.log(form);
-
             const news = cloneDeep(this.news);
-
             if (this.isEdit) {
                 news.splice(this.currentIndex, 1, form);
             } else {
@@ -152,6 +151,5 @@ export default {
             this.updateNews(news);
         },
     },
-
 };
 </script>
