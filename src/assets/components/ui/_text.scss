@@ -1,0 +1,36 @@
+.common-text {
+    overflow : hidden;
+    margin-top : 0;
+    text-overflow : ellipsis;
+}
+.h1 {
+    @include mobile {
+        font-size : 30px;
+    }
+
+font-weight : 400;
+
+@extend .common-text;
+}
+.h2 {
+    font-weight : 400;
+
+@extend .common-text;
+}
+.h3 {
+    font-weight : 400;
+
+@extend .common-text;
+}
+.text {
+    @extend .common-text;
+}
+.text-small {
+    @include flex;
+
+    color : $grey;
+    font-size : 14px;
+    font-weight : 400;
+
+@extend .common-text;
+}

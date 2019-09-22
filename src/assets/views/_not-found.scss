@@ -1,0 +1,10 @@
+.not-found {
+    @include inner();
+
+@include flex;
+
+@include justify-content(center);
+
+    box-sizing : border-box;
+    height : 100%;
+}

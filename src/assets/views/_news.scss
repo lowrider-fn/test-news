@@ -1,0 +1,17 @@
+.news__inner {
+    @include inner;
+
+@include flex;
+
+@include flex-column;
+
+    position : relative;
+    box-sizing : border-box;
+    width : 100%;
+    max-width : 700px;
+}
+.news__control {
+    position : absolute;
+    top : 40px;
+    right : 20px;
+}

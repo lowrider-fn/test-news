@@ -1,0 +1,35 @@
+.header {
+    box-shadow : 0 0 10px rgba(0,0,0,0.5);
+}
+.header__inner {
+    @include inner;
+
+@include flex;
+
+@include justify-content(flex-end);
+
+@include mobile {
+        display : block;
+    }
+
+padding-top : 20px;
+}
+
+.header__list {
+    @include flex;
+
+@include justify-content(flex-end);
+
+@include reset-list;
+
+@include mobile {
+        display : block;
+    }
+}
+
+.header__item {
+    .link-nav {
+        padding : 15px 20px;
+    }
+}
+

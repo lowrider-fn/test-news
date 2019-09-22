@@ -1,0 +1,19 @@
+.form {
+    .modal__container {
+        width : 100%;
+        max-width : 700px;
+    }
+}
+.form__row {
+    @include  flex-wrap (wrap);
+
+@include justify-content (flex-end);
+
+@include  flex ;
+
+    padding : 5px;
+
+    .btn {
+        margin : 10px;
+    }
+}
