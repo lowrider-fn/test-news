@@ -1,7 +1,7 @@
 <template>
     <div class="not-found">
         <h1 class="h1">
-            Страница не найдена
+            {{ $route.meta.title }}
         </h1>
     </div>
 </template>

@@ -4,7 +4,7 @@
     >
         <Modal v-if="isForm"
                class="form"
-               @close="cancel()"
+               @close="close()"
         >
             <slot>
                 <h3 class="h3">
@@ -45,7 +45,7 @@
                         </button>
                         <button class="btn-red"
                                 type="button"
-                                @click="cancel()"
+                                @click="close()"
                         >
                             Отмена
                         </button>
@@ -111,7 +111,7 @@ export default {
             this.setDate();
             this.setId();
             this.$emit('save', cloneDeep(this.form));
-            this.$emit('update:isHide', false);
+            this.close();
         },
         setId() {
             if (!this.form.source.id) {
@@ -125,7 +125,7 @@ export default {
             const [date] = new Date(timezone).toISOString().split('.');
             this.form.date = date;
         },
-        cancel() {
+        close() {
             this.$emit('update:isHide', false);
         },
     },

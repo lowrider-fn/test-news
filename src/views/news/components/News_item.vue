@@ -23,7 +23,7 @@
                      :alt="news.source.name"
                 >
             </div>
-            <div v-if="isAdmin"
+            <div v-if="isAuth"
                  class="news-item__edit"
             >
                 <button type="button"
@@ -47,7 +47,7 @@
 
 export default {
     props: {
-        isAdmin: {
+        isAuth: {
             type   : Boolean,
             default: false,
         },

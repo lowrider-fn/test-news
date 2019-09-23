@@ -2,9 +2,9 @@
     <div class="news">
         <div class="news__inner">
             <h1 class="h1">
-                {{ setTitle }}
+                {{ $route.meta.title }}
             </h1>
-            <div v-if="isAdmin"
+            <div v-if="$route.meta.auth"
                  class="news__control"
             >
                 <button type="button"
@@ -18,11 +18,11 @@
             <NewsItem v-for="(item,i) in news"
                       :key="i"
                       :news="item"
-                      :isAdmin="isAdmin"
+                      :isAuth="$route.meta.auth"
                       @delete="confirmDelete(item)"
                       @edit="openForm(item)"
             />
-            <div v-if="isAdmin">
+            <div v-if="$route.meta.auth">
                 <NewsConfirm :isShow="isDelete"
                              :isHide.sync="isDelete"
                              @delete="deleteNews(currentForm)"
@@ -48,17 +48,10 @@ export default {
         NewsConfirm: () => import('./components/News_confirm'),
         NewsForm   : () => import('./components/News_form'),
     },
-    props: {
-        isAuth: {
-            type   : Boolean,
-            default: false,
-        },
-    },
     data() {
         return {
             isDelete   : false,
             isForm     : false,
-            isAdmin    : false,
             isEdit     : false,
             defaultForm: {
                 source: {
@@ -77,24 +70,9 @@ export default {
         ...mapGetters([
             'news',
         ]),
-        setTitle() {
-            if (this.isAdmin) {
-                return 'Редактирование новостей';
-            }
-            return 'Новости';
-        },
     },
     mounted() {
         this.getNews();
-    },
-    beforeRouteEnter(to, from, next) {
-        next((vm) => {
-            if (to.meta.auth) {
-                vm.isAdmin = true;
-            } else {
-                vm.isAdmin = false;
-            }
-        });
     },
     methods: {
         ...mapActions([

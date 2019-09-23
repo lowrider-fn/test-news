@@ -4,7 +4,7 @@
                 @logout="confirmExit();"
         />
         <main>
-            <router-view :isAuth="isAuth" />
+            <router-view />
         </main>
     </div>
 </template>

@@ -36,6 +36,9 @@ const router = new Router({
             path     : '/',
             component: News,
             name     : 'News',
+            meta     : {
+                title: 'Новости',
+            },
         },
         {
             path    : '*',
@@ -48,6 +51,7 @@ const router = new Router({
             beforeEnter: checkGuest,
             meta       : {
                 guest: true,
+                title: 'Авторизация',
             },
         },
         {
@@ -65,16 +69,22 @@ const router = new Router({
             name       : 'EditNews',
             beforeEnter: checkAuth,
             meta       : {
-                auth: true,
+                auth : true,
+                title: 'Редактирование новостей',
             },
         },
         {
             path     : '/not_found',
             name     : 'NotFound',
             component: NotFound,
+            meta     : {
+                title: 'Страница не найдена',
+            },
         },
     ],
 
 });
+router.afterEach(to => document.title = to.meta.title);
+
 export default router;
 

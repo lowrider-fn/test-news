@@ -4,7 +4,7 @@
     >
         <Modal v-if="isShow"
                class="confirm"
-               @close="cancel()"
+               @close="close()"
         >
             <slot>
                 <h3 class="h3">
@@ -19,7 +19,7 @@
                     </button>
                     <button class="btn-green"
                             type="button"
-                            @click="cancel()"
+                            @click="close()"
                     >
                         Отмена
                     </button>
@@ -47,9 +47,9 @@ export default {
     methods: {
         confirm() {
             this.$emit('delete');
-            this.$emit('update:isHide', false);
+            this.close();
         },
-        cancel() {
+        close() {
             this.$emit('update:isHide', false);
         },
     },

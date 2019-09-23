@@ -2,7 +2,7 @@
     <div class="auth">
         <div class="auth__inner">
             <h1 class="h1">
-                Авторизация
+                {{ $route.meta.title }}
             </h1>
             <form class="auth__form">
                 <Field v-model="form.login"
@@ -53,7 +53,7 @@ export default {
         ]),
         login() {
             this.checkLogin();
-            this.$router.push({ path: '/article_editing' });
+            this.$router.push({ name: 'EditNews' });
         },
     },
 };
