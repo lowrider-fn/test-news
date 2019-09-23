@@ -19,18 +19,16 @@
                       :key="i"
                       :news="item"
                       :isAdmin="isAdmin"
-                      @delete="deleteNews(i)"
-                      @edit="openForm(item,i)"
+                      @delete="confirmDelete(item)"
+                      @edit="openForm(item)"
             />
             <div v-if="isAdmin">
                 <NewsConfirm :isShow="isDelete"
                              :isHide.sync="isDelete"
-                             @confirm="confirmDelete()"
+                             @delete="deleteNews(currentForm)"
                 />
-                <NewsForm :isShow="isForm"
-                          :currentForm="currentForm"
-                          :isEdit="isEdit"
-                          @close="closeForm()"
+                <NewsForm v-bind={isForm,isEdit,currentForm}
+                          :isHide.sync="isForm"
                           @save="save($event)"
                 />
             </div>
@@ -42,7 +40,6 @@
 
 import NewsItem from './components/News_item';
 import { mapGetters, mapActions } from 'vuex';
-import cloneDeep from 'lodash.clonedeep';
 
 export default {
     name      : 'News',
@@ -59,13 +56,10 @@ export default {
     },
     data() {
         return {
-            isDelete: false,
-            isForm  : false,
-            isAdmin : false,
-            isEdit  : false,
-
-            currentIndex: null,
-
+            isDelete   : false,
+            isForm     : false,
+            isAdmin    : false,
+            isEdit     : false,
             defaultForm: {
                 source: {
                     name: '',
@@ -106,49 +100,29 @@ export default {
         ...mapActions([
             'getNews',
             'updateNews',
+            'deleteNews',
+            'addNews',
         ]),
-        setIsDelete() {
-            this.isDelete = !this.isDelete;
-        },
-        setIsForm() {
-            this.isForm = !this.isForm;
-        },
-        closeForm() {
-            this.setIsForm();
-            if (this.isEdit) {
-                this.isEdit = !this.isEdit;
-                this.currentIndex = null;
-            }
-        },
-        openForm(news, i) {
+        openForm(news) {
             if (news) {
-                this.currentIndex = i;
                 this.isEdit = true;
-                this.currentForm = cloneDeep(news);
+                this.currentForm = news;
             } else {
                 this.isEdit = false;
-                this.currentForm = cloneDeep(this.defaultForm);
+                this.currentForm = this.defaultForm;
             }
-            this.setIsForm();
+            this.isForm = true;
         },
-        deleteNews(i) {
-            this.setIsDelete();
-            this.currentIndex = i;
-        },
-        confirmDelete() {
-            const { news } = this;
-            news.splice(this.currentIndex, 1);
-            this.updateNews(news);
+        confirmDelete(news) {
+            this.currentForm = news;
+            this.isDelete = true;
         },
         save(form) {
-            const news = cloneDeep(this.news);
             if (this.isEdit) {
-                news.splice(this.currentIndex, 1, form);
+                this.updateNews(form);
             } else {
-                news.push(form);
+                this.addNews(form);
             }
-            this.closeForm();
-            this.updateNews(news);
         },
     },
 };

@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import store from '@/store';
 
 import Auth from '@/views/auth/Auth';
 import News from '@/views/news/News';
@@ -8,31 +7,25 @@ import NotFound from '@/views/Not_found';
 
 Vue.use(Router);
 
-const isAuth = async () => store.getters.asyncIsAuth;
+const isAuth = () => JSON.parse(localStorage.getItem('auth'));
 
 const checkAuth = (to, from, next) => {
     if (to.matched.some(record => record.meta.auth)) {
-        isAuth()
-            .then((isAuth) => {
-                if (isAuth) {
-                    next();
-                } else {
-                    next({ path: '/login' });
-                }
-            });
+        if (isAuth()) {
+            next();
+        } else {
+            next({ path: '/login' });
+        }
     }
 };
 
 const checkGuest = (to, from, next) => {
     if (to.matched.some(record => record.meta.guest)) {
-        isAuth()
-            .then((isAuth) => {
-                if (isAuth) {
-                    next({ path: '/article_editing' });
-                } else {
-                    next();
-                }
-            });
+        if (isAuth()) {
+            next({ path: '/article_editing' });
+        } else {
+            next();
+        }
     }
 };
 
@@ -40,8 +33,9 @@ const router = new Router({
     mode  : 'history',
     routes: [
         {
-            path    : '/',
-            redirect: '/whats_new',
+            path     : '/',
+            component: News,
+            name     : 'News',
         },
         {
             path    : '*',
@@ -59,15 +53,11 @@ const router = new Router({
         {
             path       : '/logout',
             component  : Auth,
+            name       : 'Logout',
             beforeEnter: checkAuth,
             meta       : {
                 auth: true,
             },
-        },
-        {
-            path     : '/whats_new',
-            component: News,
-            name     : 'News',
         },
         {
             path       : '/article_editing',

@@ -46,7 +46,7 @@ export default {
     },
     methods: {
         confirm() {
-            this.$emit('confirm');
+            this.$emit('delete');
             this.$emit('update:isHide', false);
         },
         cancel() {

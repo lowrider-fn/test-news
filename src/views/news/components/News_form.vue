@@ -2,7 +2,7 @@
     <transition
         name="modal"
     >
-        <Modal v-if="isShow"
+        <Modal v-if="isForm"
                class="form"
                @close="cancel()"
         >
@@ -61,6 +61,7 @@
 import Modal from '@/components/blocks/Modal';
 import Field from '@/components/ui/Field';
 import Textarea from '@/components/ui/Textarea';
+import cloneDeep from 'lodash.clonedeep';
 
 export default {
     name      : 'NewsForm',
@@ -70,7 +71,7 @@ export default {
         Textarea,
     },
     props: {
-        isShow: {
+        isForm: {
             type   : Boolean,
             default: false,
         },
@@ -100,7 +101,7 @@ export default {
             deep: true,
             handler(val) {
                 if (val) {
-                    this.form = val;
+                    this.form = cloneDeep(val);
                 }
             },
         },
@@ -109,7 +110,9 @@ export default {
         save() {
             this.setDate();
             this.setId();
-            this.$emit('save', this.form);
+            this.$emit('save', cloneDeep(this.form));
+            this.$emit('update:isHide', false);
+            this.form = null;
         },
         setId() {
             if (!this.form.source.id) {
@@ -124,7 +127,7 @@ export default {
             this.form.date = date;
         },
         cancel() {
-            this.$emit('close');
+            this.$emit('update:isHide', false);
         },
     },
 };

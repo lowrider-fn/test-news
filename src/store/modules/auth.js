@@ -20,8 +20,7 @@ const mutations = {
 };
 
 const getters = {
-    isAuth     : state => state.isAuth,
-    asyncIsAuth: async state => state.isAuth,
+    isAuth: state => state.isAuth,
 };
 
 export default {

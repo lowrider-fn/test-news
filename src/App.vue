@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <Header :isAuth="isAuth"
-                @logout="logoutHandler($event)"
+                @logout="confirmExit();"
         />
         <main>
             <router-view :isAuth="isAuth" />
@@ -23,7 +23,6 @@ export default {
         ...mapGetters([
             'isAuth',
         ]),
-
     },
     mounted() {
         this.checkAuth();
@@ -33,12 +32,8 @@ export default {
             'SET_IS_AUTH',
         ]),
         ...mapActions([
-            'checkLogin',
             'confirmExit',
         ]),
-        logoutHandler(e) {
-            this.confirmExit();
-        },
         checkAuth() {
             if (JSON.parse(localStorage.getItem('auth'))) {
                 this.SET_IS_AUTH();

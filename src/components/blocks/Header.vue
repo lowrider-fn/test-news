@@ -8,7 +8,7 @@
                 >
                     <router-link v-if="link.isShow"
                                  class="link-nav"
-                                 :to="link.url"
+                                 :to="{ name:link.name}"
                                  @click.native="link.action($event);"
                     >
                         {{ link.text }}
@@ -31,25 +31,25 @@ export default {
         links() {
             return [
                 {
-                    url   : '/whats_new',
+                    name  : 'News',
                     text  : 'Что нового',
                     isShow: true,
                     action: () => {},
                 },
                 {
-                    url   : '/article_editing',
+                    name  : 'EditNews',
                     text  : 'Редактировать',
                     isShow: this.isAuth,
                     action: () => {},
                 },
                 {
-                    url   : '/login',
+                    name  : 'Auth',
                     text  : 'Авторизоваться',
                     isShow: !this.isAuth,
                     action: () => {},
                 },
                 {
-                    url   : '/logout',
+                    name  : 'Logout',
                     text  : 'Выйти',
                     isShow: this.isAuth,
                     action: e => this.$emit('logout', e),
