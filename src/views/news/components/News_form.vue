@@ -112,7 +112,6 @@ export default {
             this.setId();
             this.$emit('save', cloneDeep(this.form));
             this.$emit('update:isHide', false);
-            this.form = null;
         },
         setId() {
             if (!this.form.source.id) {
