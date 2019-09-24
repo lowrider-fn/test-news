@@ -9,7 +9,7 @@
                     <router-link v-if="link.isShow"
                                  class="link-nav"
                                  :to="{ name:link.name}"
-                                 @click.native="link.action($event);"
+                                 @click.native="link.action()"
                     >
                         {{ link.text }}
                     </router-link>
@@ -49,11 +49,10 @@ export default {
                     action: () => {},
                 },
                 {
-                    name  : 'Logout',
+                    name  : 'Auth',
                     text  : 'Выйти',
                     isShow: this.isAuth,
-                    action: e => this.$emit('logout', e),
-
+                    action: () => this.$emit('logout'),
                 },
 
             ];

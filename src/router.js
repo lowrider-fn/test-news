@@ -55,15 +55,6 @@ const router = new Router({
             },
         },
         {
-            path       : '/logout',
-            component  : Auth,
-            name       : 'Logout',
-            beforeEnter: checkAuth,
-            meta       : {
-                auth: true,
-            },
-        },
-        {
             path       : '/article_editing',
             component  : News,
             name       : 'EditNews',

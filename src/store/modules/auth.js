@@ -4,19 +4,24 @@ const state = {
 };
 
 const actions = {
-    checkLogin: (store) => {
+    login: ({ commit }, data) => {
         localStorage.setItem('auth', true);
-        store.commit('SET_IS_AUTH');
+        commit('LOGIN');
     },
-
-    confirmExit: (store) => {
+    checkAuth({ commit }) {
+        if (JSON.parse(localStorage.getItem('auth'))) {
+            commit('LOGIN');
+        }
+    },
+    logout: ({ commit }) => {
         localStorage.removeItem('auth');
-        store.commit('SET_IS_AUTH');
+        commit('LOGOUT');
     },
 };
 
 const mutations = {
-    SET_IS_AUTH: state => state.isAuth = !state.isAuth,
+    LOGIN : state => state.isAuth = true,
+    LOGOUT: state => state.isAuth = false,
 };
 
 const getters = {

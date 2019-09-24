@@ -19,7 +19,7 @@
                 <div class="auth__btn">
                     <button class="btn-blue"
                             type="button"
-                            @click="login()"
+                            @click="loginHandler()"
                     >
                         Войти
                     </button>
@@ -49,10 +49,10 @@ export default {
     },
     methods: {
         ...mapActions([
-            'checkLogin',
+            'login',
         ]),
-        login() {
-            this.checkLogin();
+        loginHandler() {
+            this.login(this.form);
             this.$router.push({ name: 'EditNews' });
         },
     },

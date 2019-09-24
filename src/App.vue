@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <Header :isAuth="isAuth"
-                @logout="confirmExit();"
+                @logout="logoutHandler()"
         />
         <main>
             <router-view />
@@ -12,7 +12,7 @@
 <script>
 
 import Header from '@/components/blocks/Header';
-import { mapGetters, mapMutations, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     name      : 'App',
@@ -28,16 +28,13 @@ export default {
         this.checkAuth();
     },
     methods: {
-        ...mapMutations([
-            'SET_IS_AUTH',
-        ]),
         ...mapActions([
-            'confirmExit',
+            'logout',
+            'checkAuth',
         ]),
-        checkAuth() {
-            if (JSON.parse(localStorage.getItem('auth'))) {
-                this.SET_IS_AUTH();
-            }
+        logoutHandler() {
+            this.logout();
+            this.$router.push({ name: 'Auth' });
         },
     },
 };
