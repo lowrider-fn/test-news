@@ -24,16 +24,12 @@ export default {
             'isAuth',
         ]),
     },
-    mounted() {
-        this.checkAuth();
-    },
     methods: {
         ...mapActions([
             'logout',
-            'checkAuth',
         ]),
-        logoutHandler() {
-            this.logout();
+        async logoutHandler() {
+            await this.logout();
             this.$router.push({ name: 'Auth' });
         },
     },

@@ -51,8 +51,8 @@ export default {
         ...mapActions([
             'login',
         ]),
-        loginHandler() {
-            this.login(this.form);
+        async loginHandler() {
+            await this.login(this.form);
             this.$router.push({ name: 'EditNews' });
         },
     },

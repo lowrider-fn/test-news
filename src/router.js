@@ -5,29 +5,9 @@ import Auth from '@/views/auth/Auth';
 import News from '@/views/news/News';
 import NotFound from '@/views/Not_found';
 
+import store from '@/store';
+
 Vue.use(Router);
-
-const isAuth = () => JSON.parse(localStorage.getItem('auth'));
-
-const checkAuth = (to, from, next) => {
-    if (to.matched.some(record => record.meta.auth)) {
-        if (isAuth()) {
-            next();
-        } else {
-            next({ path: '/login' });
-        }
-    }
-};
-
-const checkGuest = (to, from, next) => {
-    if (to.matched.some(record => record.meta.guest)) {
-        if (isAuth()) {
-            next({ path: '/article_editing' });
-        } else {
-            next();
-        }
-    }
-};
 
 const router = new Router({
     mode  : 'history',
@@ -45,21 +25,27 @@ const router = new Router({
             redirect: '/not_found',
         },
         {
-            path       : '/login',
-            component  : Auth,
-            name       : 'Auth',
-            beforeEnter: checkGuest,
-            meta       : {
+            path     : '/login',
+            component: Auth,
+            name     : 'Auth',
+            meta     : {
                 guest: true,
                 title: 'Авторизация',
             },
         },
         {
-            path       : '/article_editing',
-            component  : News,
-            name       : 'EditNews',
-            beforeEnter: checkAuth,
-            meta       : {
+            path     : '/logout',
+            component: Auth,
+            name     : 'Logout',
+            meta     : {
+                auth: true,
+            },
+        },
+        {
+            path     : '/article_editing',
+            component: News,
+            name     : 'EditNews',
+            meta     : {
                 auth : true,
                 title: 'Редактирование новостей',
             },
@@ -74,6 +60,34 @@ const router = new Router({
         },
     ],
 
+});
+const isAuth = () => store.getters.isAuth;
+
+const checkAuth = (to, next) => {
+    if (to.matched.some(record => record.meta.auth)) {
+        if (isAuth()) {
+            next();
+        } else {
+            next({ name: 'Auth' });
+        }
+    }
+};
+
+const checkGuest = (to, next) => {
+    if (to.matched.some(record => record.meta.guest)) {
+        if (isAuth()) {
+            next({ name: 'EditNews' });
+        } else {
+            next();
+        }
+    }
+};
+router.beforeEach(async (to, from, next) => {
+    if (!from.name) {
+        await store.dispatch('checkLogin');
+    }
+    checkAuth(to, next);
+    checkGuest(to, next);
 });
 router.afterEach(to => document.title = to.meta.title);
 

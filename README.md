@@ -1,5 +1,7 @@
 # Vue quick 
 
+## [Demo](https://lowrider-fn.github.io/vue-quick/).
+
 ## Project setup
 ```
 npm install

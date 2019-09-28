@@ -8,7 +8,7 @@ const actions = {
         localStorage.setItem('auth', true);
         commit('LOGIN');
     },
-    checkAuth({ commit }) {
+    checkLogin({ commit }) {
         if (JSON.parse(localStorage.getItem('auth'))) {
             commit('LOGIN');
         }
