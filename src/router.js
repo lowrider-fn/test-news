@@ -30,7 +30,7 @@ const checkGuest = (to, from, next) => {
 };
 
 const router = new Router({
-    mode  : 'history',
+    mode  : 'hash',
     routes: [
         {
             path     : '/',
