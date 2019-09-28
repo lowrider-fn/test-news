@@ -34,14 +34,6 @@ const router = new Router({
             },
         },
         {
-            path     : '/logout',
-            component: Auth,
-            name     : 'Logout',
-            meta     : {
-                auth: true,
-            },
-        },
-        {
             path     : '/article_editing',
             component: News,
             name     : 'EditNews',
@@ -70,6 +62,8 @@ const checkAuth = (to, next) => {
         } else {
             next({ name: 'Auth' });
         }
+    } else {
+        next();
     }
 };
 
@@ -80,8 +74,11 @@ const checkGuest = (to, next) => {
         } else {
             next();
         }
+    } else {
+        next();
     }
 };
+
 router.beforeEach(async (to, from, next) => {
     if (!from.name) {
         await store.dispatch('checkLogin');
@@ -89,6 +86,7 @@ router.beforeEach(async (to, from, next) => {
     checkAuth(to, next);
     checkGuest(to, next);
 });
+
 router.afterEach(to => document.title = to.meta.title);
 
 export default router;
