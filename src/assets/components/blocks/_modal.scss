@@ -1,6 +1,4 @@
 .modal__mask {
-    @include transition ;
-
     position : fixed;
     z-index : 9998;
     top : 0;
@@ -8,19 +6,17 @@
     width : 100%;
     height : 100%;
     background-color : rgba(0, 0, 0, 0.5);
+
+@include transition ;
 }
 
 .modal__wrapper {
-    @include transition ;
-
     height : 100%;
+
+@include transition ;
 }
 
 .modal__container {
-    @include transform(translate(-50%,-50%));
-
-@include transition ;
-
     position : relative;
     top : 50%;
     left : 50%;
@@ -29,6 +25,10 @@
     border-radius : 4px;
     background-color : #fff;
     box-shadow : 0 2px 8px rgba(0, 0, 0, 0.33);
+
+@include transform(translate(-50%,-50%));
+
+@include transition ;
 }
 .modal-enter {
     opacity : 0;

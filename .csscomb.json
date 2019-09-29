@@ -1,9 +1,7 @@
-{
-  "sort-order"          : [ 
-    [ "$variable" ], 
-    [ "$include", "@include" ],  
-    [ "$include media" ],
-    [
+{ 
+  "sort-order":[ 
+     
+     [ 
         "position",
         "z-index",
         "top",
@@ -294,29 +292,35 @@
         "font-emphasize-position",
         "font-emphasize-style",
         "font-smooth",
-        "line-height"
-  ]
+		"line-height"
+	 ],
+	 [ 
+        "$variable"
+     ],
+     [ 
+        "$include"],
+     [ 
+        "$include media"
+     ]
   ],
-  "sort-order-fallback" : "abc",
-  "always-semicolon": true,
-  "block-indent": "    ",
-  "color-case": "lower",
-  "color-shorthand": true,
-  "element-case": "lower",
-  "eof-newline": false,
-  "leading-zero": true,
-  "quotes": "single",
-  "remove-empty-rulesets": false,
-  "space-after-colon": " ",
-  "space-after-combinator": "\n",
-  "space-after-opening-brace": "\n",
-  "space-after-selector-delimiter": "\n",
-  "space-before-closing-brace": "\n",
-  "space-before-colon": " ",
-  "space-before-combinator": " ",
-  "space-before-opening-brace": " ",
-  "space-before-selector-delimiter": " ",
-  "space-between-declarations": "\n"
-
+  "sort-order-fallback":"abc",
+  "always-semicolon":true,
+  "block-indent":"    ",
+  "color-case":"lower",
+  "color-shorthand":true,
+  "element-case":"lower",
+  "eof-newline":false,
+  "leading-zero":true,
+  "quotes":"single",
+  "remove-empty-rulesets":false,
+  "space-after-colon":" ",
+  "space-after-combinator":"\n",
+  "space-after-opening-brace":"\n",
+  "space-after-selector-delimiter":"\n",
+  "space-before-closing-brace":"\n",
+  "space-before-colon":" ",
+  "space-before-combinator":" ",
+  "space-before-opening-brace":" ",
+  "space-before-selector-delimiter":" ",
+  "space-between-declarations":"\n"
 }
-

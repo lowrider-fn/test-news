@@ -1,26 +1,26 @@
 .link {
-    @include hover-focus {
-        opacity : 0.6;
-    }
-
-@include transition;
-
     text-decoration : none;
     color : $blue;
     font-size : 16px;
     font-weight : 400;
     line-height : 1.2;
-}
-.link-nav {
-    @include mobile {
-        padding : 10px;
+
+@include hover-focus {
+        opacity : 0.6;
     }
 
-display : inline-block;
+@include transition;
+}
+.link-nav {
+    display : inline-block;
     padding : 5px 1px;
     text-transform : uppercase;
     color : $blue;
     font-weight : 500;
+
+@include mobile {
+        padding : 10px;
+    }
 
 @extend .link;
 

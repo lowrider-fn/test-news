@@ -5,13 +5,13 @@
     }
 }
 .form__row {
-    @include  flex-wrap (wrap);
-
-@include justify-content (flex-end);
+    padding : 5px;
 
 @include  flex ;
 
-    padding : 5px;
+@include  flex-wrap (wrap);
+
+@include justify-content (flex-end);
 
     .btn {
         margin : 10px;

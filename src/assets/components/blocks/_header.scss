@@ -2,7 +2,9 @@
     box-shadow : 0 0 10px rgba(0,0,0,0.5);
 }
 .header__inner {
-    @include inner;
+    padding-top : 20px;
+
+@include inner;
 
 @include flex;
 
@@ -11,8 +13,6 @@
 @include mobile {
         display : block;
     }
-
-padding-top : 20px;
 }
 
 .header__list {

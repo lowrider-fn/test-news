@@ -1,14 +1,14 @@
 
 .auth__inner {
-    @include inner;
+    box-sizing : border-box;
+
+@include inner;
 
 @include flex;
 
 @include flex-column;
 
 @include align-items(center);
-
-    box-sizing : border-box;
 }
 .auth__form {
     width : 100%;
@@ -18,9 +18,9 @@
     border-radius : 4px;
 }
 .auth__btn {
-    @include flex;
+    padding : 10px;
+
+@include flex;
 
 @include justify-content(flex-end);
-
-    padding : 10px;
 }
