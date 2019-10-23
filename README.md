@@ -32,7 +32,7 @@ dbaeumer.vscode-eslint
 mrmlnc.vscode-csscomb
 ```
 
-Заходим в ``` settings.json ```
+Заходим в ``` settings.json ```  
 Вставляем в объект:
 
 для ESlint
@@ -59,7 +59,7 @@ streetsidesoftware.code-spell-checker
 streetsidesoftware.code-spell-checker-russian
 ```
 
-Заходим в ``` settings.json ```
+Заходим в ``` settings.json ```  
 Вставляем в объект:
 ```
 "cSpell.language": "en,ru,en-US",
@@ -91,6 +91,3 @@ streetsidesoftware.code-spell-checker-russian
         "streetsidesoftware", 
     ]
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
