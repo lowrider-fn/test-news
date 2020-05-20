@@ -1,9 +1,10 @@
 .not-found {
-    box-sizing: border-box;
-    height: 100%;
+    box-sizing : border-box;
+    height : 100%;
 
-    
+@include inner();
 
-    display: flex;
-    justify-content: center;
+@include flex;
+
+@include justify-content(center);
 }

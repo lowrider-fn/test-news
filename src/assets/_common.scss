@@ -1,0 +1,16 @@
+body {
+    font-family : $main-font;
+}
+
+* {
+    box-sizing : border-box;
+}
+.row-end {
+    padding : 5px;
+
+@include flex;
+
+@include flex-wrap (wrap);
+
+@include justify-content(space-between);
+}

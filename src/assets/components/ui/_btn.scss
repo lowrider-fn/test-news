@@ -1,6 +1,28 @@
+
+.button {
+    display : inline-block;
+    margin : 0;
+    padding : 0;
+    cursor : pointer;
+    text-transform : uppercase;
+    border : none;
+    border-radius : 4px;
+    outline : none;
+    background : transparent;
+
+@include transition;
+
+    -webkit-appearance : none;
+    -moz-appearance : none;
+    -ms-appearance : none;
+    -o-appearance : none;
+    appearance : none;
+}
 .btn {
     padding : 7px 15px;
     font-size : 14px;
+
+@extend .button;
 }
 
 .btn-blue {
@@ -12,6 +34,8 @@
         border : solid 1px $blue;
         background : $blue;
     }
+
+@extend .btn;
 
     &:active {
         color : $white;
@@ -29,6 +53,8 @@
         background : $red;
     }
 
+@extend .btn;
+
     &:active {
         color : $white;
         border : solid 1px $red;
@@ -45,6 +71,8 @@
         background : $green;
     }
 
+@extend .btn;
+
     &:active {
         color : $white;
         border : solid 1px $green;
@@ -56,6 +84,8 @@
     padding : 10px;
     border : solid 1px transparent;
     font-size : 13px;
+
+@extend .button;
 }
 
 .btn-link-orange {
@@ -71,7 +101,6 @@
         border : solid 1px $orange;
     }
 }
-
 .btn-link-red {
     color : $red;
 
@@ -85,7 +114,6 @@
         border : solid 1px $red;
     }
 }
-
 .btn-link-green {
     color : $green;
 

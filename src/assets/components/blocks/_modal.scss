@@ -1,0 +1,44 @@
+.modal__mask {
+    position : fixed;
+    z-index : 9998;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height : 100%;
+    background-color : rgba(0, 0, 0, 0.5);
+
+@include transition ;
+}
+
+.modal__wrapper {
+    height : 100%;
+
+@include transition ;
+}
+
+.modal__container {
+    position : relative;
+    top : 50%;
+    left : 50%;
+    display : inline-block;
+    padding : 30px 30px 20px;
+    border-radius : 4px;
+    background-color : #fff;
+    box-shadow : 0 2px 8px rgba(0, 0, 0, 0.33);
+
+@include transform(translate(-50%,-50%));
+
+@include transition ;
+}
+.modal-enter {
+    opacity : 0;
+}
+
+.modal-leave-active {
+    opacity : 0;
+}
+
+.modal-enter .modal-container ,
+.modal-leave-active .modal-container {
+    @include transform(scale(1.1) translate(-50%,-50%));
+}
