@@ -1,4 +1,4 @@
-# Vue quick 
+# Test news
 
 ## [Demo](https://lowrider-fn.github.io/vue-quick/).
 
