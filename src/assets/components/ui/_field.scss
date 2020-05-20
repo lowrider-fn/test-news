@@ -1,33 +1,31 @@
 .field {
-    width : 100%;
-    margin-bottom : 15px;
-
-@include flex;
-
-@include flex-column();
+  width: 100%;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
 }
+
 .field__label {
-    padding : 4px;
-    color : $black;
-    font-size : 16px;
-    font-weight : 400;
+  padding: 4px;
+  color: $black;
+  font-size: 16px;
+  font-weight: 400;
 }
+
 .field__input {
-    padding : 7px 5px;
-    resize : none;
-    border : solid 1px $blue;
-    border-radius : 4px;
-    outline : none;
-    font-size : 16px;
-    font-weight : 300;
+  padding: 7px 5px;
+  resize: none;
+  border: solid 1px $blue;
+  border-radius: 4px;
+  outline: none;
+  font-size: 16px;
+  font-weight: 300;
 
-@include hover {
-        box-shadow : 0 0 5px #299cb4;
-    }
+  @include hover {
+    box-shadow: 0 0 5px #299CB4;
+  }
 
-@include transition;
-
-    &:focus {
-        box-shadow : 0 0 5px #299cb4;
-    }
+  &:focus {
+    box-shadow: 0 0 5px #299CB4;
+  }
 }

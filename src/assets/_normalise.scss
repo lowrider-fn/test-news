@@ -1,273 +1,97 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+  
+  
+body ,
 html {
-    font-family : sans-serif; /* 1 */
-
-    -webkit-text-size-adjust : 100%; /* 2 */
-    -ms-text-size-adjust : 100%; /* 2 */
+    overflow: hidden;
+    height: 100%;
 }
-
-
+  
+html {
+    font-size: 62.5%;
+}
+  
 body {
-    margin : 0;
+    margin: 0;
+    font-family: $main-font;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
-
-
-article ,
-aside ,
-details ,
-figcaption ,
-figure ,
-footer ,
-header ,
-hgroup ,
-main ,
-menu ,
-nav ,
-section ,
-summary {
-    display : block;
-}
-
-
-
-audio ,
-canvas ,
-progress ,
-video {
-    display : inline-block; /* 1 */
-    vertical-align : baseline; /* 2 */
-}
-
-
-audio:not([controls]) {
-    display : none;
-    height : 0;
-}
-
-
-[hidden] ,
-template {
-    display : none;
-}
-
-
-
-a {
-    background-color : transparent;
-
-    -webkit-text-decoration-skip : objects;
-}
-
-
-a:active ,
-a:hover {
-    outline : 0;
-}
-
-
-abbr[title] {
-    border-bottom : 1px dotted;
-}
-
-/**
- * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
- */
-
-b ,
-strong {
-    font-weight : bold;
-}
-
-dfn {
-    font-style : italic;
-}
-
-
-h1 {
-    margin : 0.67em 0;
-    font-size : 2em;
-}
-
-mark {
-    color : #000;
-    background : #ff0;
-}
-
-small {
-    font-size : 80%;
-}
-
-
-
-sub ,
-sup {
-    position : relative;
-    vertical-align : baseline;
-    font-size : 75%;
-    line-height : 0;
-}
-
-sup {
-    top : -0.5em;
-}
-
-sub {
-    bottom : -0.25em;
-}
-
-
-
-img {
-    border : 0;
-}
-
-
-svg:not(:root) {
-    overflow : hidden;
-}
-
-
-
-figure {
-    margin : 1em 40px;
-}
-
-
-hr {
-    -moz-box-sizing : content-box;
-    box-sizing : content-box;
-    height : 0;
-}
-
-pre {
-    overflow : auto;
-}
-
-code ,
-kbd ,
-pre ,
-samp {
-    font-family : monospace, monospace;
-    font-size : 1em;
-}
-
-
-button ,
-input ,
-optgroup ,
-select ,
-textarea {
-    margin : 0; /* 3 */
-    color : inherit; /* 1 */
-    font : inherit; /* 2 */
-}
-
-
-
+  
 button {
-    overflow : visible;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;
+    transition: all 0.3s linear;
+    appearance: none;
+    text-decoration: none;
 }
-
-button ,
-select {
-    text-transform : none;
+  
+a {
+    transition: all 0.3s linear;
+    text-decoration: none;
 }
-
-button ,
-html input[type='button'] ,
-/* 1 */
-input[type='reset'] ,
-input[type='submit'] {
-    cursor : pointer; /* 3 */
-
-    -webkit-appearance : button; /* 2 */
+  
+figure,pre {
+    margin: 0;
 }
-
-/**
- * Re-set default cursor for disabled elements.
- */
-
-button[disabled] ,
-html input[disabled] {
-    cursor : default;
-}
-
-/**
- * Remove inner padding and border in Firefox 4+.
- */
-
-button::-moz-focus-inner ,
-input::-moz-focus-inner {
-    padding : 0;
-    border : 0;
-}
-
+  
+//   pre {
+//     font-family: $code-font;
+//   }
+  
 input {
-    line-height : normal;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    appearance: none;
 }
-
-
-
-input[type='checkbox'] ,
-input[type='radio'] {
-    box-sizing : border-box; /* 1 */
-    padding : 0; /* 2 */
-}
-
-
-
-input[type='number']::-webkit-inner-spin-button ,
-input[type='number']::-webkit-outer-spin-button {
-    height : auto;
-}
-
-
-input[type='search'] {
-    -webkit-box-sizing : content-box; /* 2 */
-    -moz-box-sizing : content-box;
-    box-sizing : content-box;
-
-    -webkit-appearance : textfield; /* 1 */
-}
-
-
-
-input[type='search']::-webkit-search-cancel-button ,
-input[type='search']::-webkit-search-decoration {
-    -webkit-appearance : none;
-}
-
-
-
-fieldset {
-    margin : 0 2px;
-    padding : 0.35em 0.625em 0.75em;
-    border : 1px solid #c0c0c0;
-}
-
-
-legend {
-    padding : 0; /* 2 */
-    border : 0; /* 1 */
-}
-
-
-
+  
 textarea {
-    overflow : auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+    overflow: auto;
+    outline: none;
+    box-shadow: none;
+    resize: none;
 }
-
-
-
-optgroup {
-    font-weight : bold;
+  
+.app {
+    height: 100%;
 }
-
-table {
-    border-spacing : 0;
-    border-collapse : collapse;
+  
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.5s;
 }
-
-td ,
-th {
-    padding : 0;
+  
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+  
+.rail-up-enter-active, .rail-up-leave-active {
+    transition: all 0.5s;
+    transform: translateY(0) ;
+}
+  
+.rail-up-enter, .rail-up-leave-to {
+    transform: translateY(100%) ;
+}
+  
+.rail-down-enter-active, .rail-down-leave-active {
+    transition: all 0.5s;
+    transform: translateY(0) ;
+}
+  
+.rail-down-enter, .rail-down-leave-to {
+    transform: translateY(-100%) ;
 }

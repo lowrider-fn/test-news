@@ -1,12 +1,8 @@
 
 
-@import 'normalise';
+
 @import 'variables/variables';
 @import 'mixins/mixins';
-
+@import 'normalise';
 @import 'components/ui/ui';
-
-@import 'components/blocks/blocks';
 @import 'views/views';
-
-@import 'common';
